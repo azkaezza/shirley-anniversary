@@ -5,36 +5,98 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Azka ❤️ Shirley</title>
 <style>
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);color:white;text-align:center;overflow-x:hidden}
-section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px}
-h1{font-size:3rem;margin-bottom:10px}
-p{max-width:700px;line-height:1.6}
-.gallery{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
-.gallery img{width:300px;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,0.4);transition:transform .4s}
-.gallery img:hover{transform:scale(1.05)}
-.heart{position:fixed;color:#ff4d6d;font-size:20px;animation:fall linear infinite}
-@keyframes fall{0%{transform:translateY(-10vh)}100%{transform:translateY(110vh)}}
-button{padding:15px 30px;border:none;border-radius:30px;background:#ff4d6d;color:white;font-size:16px;cursor:pointer;box-shadow:0 5px 20px rgba(0,0,0,0.3)}
-.timeline{margin-top:40px}
-.timeline div{margin:15px;padding:15px;border-radius:15px;background:rgba(255,255,255,0.1)}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
+  text-align:center;
+  overflow-x:hidden;
+}
+section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:40px;
+}
+h1{
+  font-size:3rem;
+  margin-bottom:10px;
+}
+p{
+  max-width:700px;
+  line-height:1.6;
+}
+.gallery{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-top:30px;
+}
+.gallery img{
+  width:300px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+  transition:transform .4s;
+}
+.gallery img:hover{
+  transform:scale(1.05);
+}
+.heart{
+  position:fixed;
+  color:#ff4d6d;
+  font-size:20px;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  0%{transform:translateY(-10vh);}
+  100%{transform:translateY(110vh);}
+}
+button{
+  padding:15px 30px;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+.timeline{
+  margin-top:40px;
+}
+.timeline div{
+  margin:15px;
+  padding:15px;
+  border-radius:15px;
+  background:rgba(255,255,255,0.1);
+}
+.music-button{
+  margin-top:20px;
+}
 </style>
 </head>
 <body>
 
+<!-- Intro Section -->
 <section>
 <h1>1.5 Years With Shirley ❤️</h1>
 <p>This small universe is a memory of our journey together. Every laugh, every late night talk, every challenge we survived together.</p>
 <button onclick="scrollToGallery()">Our Memories</button>
 </section>
 
+<!-- Gallery Section -->
 <section id="gallery">
 <h1>Our Moments</h1>
 <div class="gallery">
-<img src="photo1.jpg">
-<img src="photo2.jpg">
+<img src="photo1.jpg" alt="Memory 1">
+<img src="photo2.jpg" alt="Memory 2">
 </div>
 </section>
 
+<!-- Story Section -->
 <section>
 <h1>Our Story</h1>
 <div class="timeline">
@@ -45,24 +107,46 @@ button{padding:15px 30px;border:none;border-radius:30px;background:#ff4d6d;color
 </div>
 </section>
 
+<!-- Sweet Personal Message -->
+<section>
+<h1>Hiii Bibibbsssss Shilll! 😘</h1>
+<p>Gak kerasa gasi 1.5 talun tapi yahhh yk we just always love each others ❤️❤️❤️ I hope kita bisa sama sama truś yahhyyy mmmih 😍</p>
+</section>
+
+<!-- Thank You Message -->
 <section>
 <h1>Message</h1>
 <p>Shirley, thank you for being beside me through everything. This is only the beginning of our story.</p>
 </section>
 
-<script>
-function scrollToGallery(){document.getElementById('gallery').scrollIntoView({behavior:'smooth'})}
+<!-- Music -->
+<audio id="bgMusic" autoplay loop>
+  <source src="your-song.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<div class="music-button">
+  <button onclick="document.getElementById('bgMusic').paused ? document.getElementById('bgMusic').play() : document.getElementById('bgMusic').pause()">
+    🎵 Toggle Music
+  </button>
+</div>
 
-function createHeart(){
-const heart=document.createElement('div')
-heart.classList.add('heart')
-heart.innerHTML='❤'
-heart.style.left=Math.random()*100+'vw'
-heart.style.animationDuration=(Math.random()*3+2)+'s'
-document.body.appendChild(heart)
-setTimeout(()=>{heart.remove()},5000)
+<script>
+// Scroll to gallery
+function scrollToGallery(){
+  document.getElementById('gallery').scrollIntoView({behavior:'smooth'});
 }
-setInterval(createHeart,300)
+
+// Falling hearts animation
+function createHeart(){
+  const heart=document.createElement('div');
+  heart.classList.add('heart');
+  heart.innerHTML='❤';
+  heart.style.left=Math.random()*100+'vw';
+  heart.style.animationDuration=(Math.random()*3+2)+'s';
+  document.body.appendChild(heart);
+  setTimeout(()=>{heart.remove()},5000);
+}
+setInterval(createHeart,300);
 </script>
 
 </body>
