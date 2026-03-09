@@ -8,8 +8,8 @@
 body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  color:white;
+  background: linear-gradient(to bottom, #a0d8f1, #e0f7fa); /* light blue sky */
+  color:#222; /* dark text for readability */
   text-align:center;
   overflow-x:hidden;
 }
@@ -46,7 +46,7 @@ p{
 }
 .heart{
   position:fixed;
-  color:#ff4d6d;
+  color:#ff4d6d; /* bright red hearts pop on light background */
   font-size:20px;
   animation:fall linear infinite;
 }
@@ -71,7 +71,8 @@ button{
   margin:15px;
   padding:15px;
   border-radius:15px;
-  background:rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.6); /* lighter timeline blocks on sky bg */
+  color:#222;
 }
 .music-button{
   margin-top:20px;
@@ -94,8 +95,8 @@ button{
   <!-- Photo 1 -->
   <img src="photo1.jpg" alt="Memory 1">
 
-  <!-- Photo 2 as Video -->
-  <video width="300" controls loop playsinline preload="auto">
+  <!-- Video 2 -->
+  <video id="ourVideo" width="300" controls loop playsinline preload="auto">
     <source src="our_moment.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
@@ -113,7 +114,7 @@ button{
 </div>
 </section>
 
-<!-- Sweet Personal Message -->
+<!-- Personal Message -->
 <section>
 <h1>Hiii Bibibbsssss Shilll! 😘</h1>
 <p>Gak kerasa gasi 1.5 talun tapi yahhh yk we just always love each others ❤️❤️❤️ I hope kita bisa sama sama truś yahhyyy mmmih 😍</p>
@@ -142,7 +143,7 @@ function scrollToGallery(){
   document.getElementById('gallery').scrollIntoView({behavior:'smooth'});
 }
 
-// Falling hearts animation (slightly slower to reduce lag)
+// Falling hearts animation (optimized)
 function createHeart(){
   const heart=document.createElement('div');
   heart.classList.add('heart');
@@ -152,15 +153,22 @@ function createHeart(){
   document.body.appendChild(heart);
   setTimeout(()=>{heart.remove()},5000);
 }
-setInterval(createHeart,500); // slower interval
+// slower interval for performance
+setInterval(createHeart,700);
 
-// Autoplay music after first click anywhere (works on modern browsers)
+// Autoplay music after first click anywhere
 document.body.addEventListener('click', function playMusicOnce(){
   const music = document.getElementById('bgMusic');
   if(music.paused){
     music.play();
   }
   document.body.removeEventListener('click', playMusicOnce);
+});
+
+// Optional: smooth video play when clicked manually
+const video = document.getElementById('ourVideo');
+video.addEventListener('click', () => {
+  if(video.paused) video.play();
 });
 </script>
 
