@@ -1,9 +1,0 @@
-<!DOCTYPE html>
-<html>
-<body>
-<video width="300" controls>
-  <source src="our_moment.mp4" type="video/mp4">
-</video>
-</body>
-</html>
-
