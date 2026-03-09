@@ -119,7 +119,7 @@ button{
 <!-- Thank You Message -->
 <section>
 <h1>Message</h1>
-<p>Shirley, thank you for being beside me through everything. This is only the beginning of our story.</p>
+<p>Shirley, thank you for being beside me through everything. This is only the beginning of our storyyy yaa miiiiihhhhhy.</p>
 </section>
 
 <script>
@@ -128,16 +128,6 @@ function scrollToGallery(){
   document.getElementById('gallery').scrollIntoView({behavior:'smooth'});
 }
 
-// Falling hearts animation (optimized)
-function createHeart(){
-  const heart = document.createElement('div');
-  heart.classList.add('heart');
-  heart.innerHTML = '❤';
-  heart.style.left = Math.random() * 100 + 'vw';
-  heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-  document.body.appendChild(heart);
-  setTimeout(() => { heart.remove(); }, 5000);
-}
 setInterval(createHeart, 700); // slower interval = smoother video
 
 // Video play manually
