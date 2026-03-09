@@ -35,13 +35,13 @@ p{
   gap:20px;
   margin-top:30px;
 }
-.gallery img{
+.gallery img, .gallery video{
   width:300px;
   border-radius:20px;
   box-shadow:0 10px 25px rgba(0,0,0,0.4);
   transition:transform .4s;
 }
-.gallery img:hover{
+.gallery img:hover, .gallery video:hover{
   transform:scale(1.05);
 }
 .heart{
@@ -91,8 +91,14 @@ button{
 <section id="gallery">
 <h1>Our Moments</h1>
 <div class="gallery">
-<img src="photo1.jpg" alt="Memory 1">
-<img src="photo2.jpg" alt="Memory 2">
+  <!-- Photo 1 -->
+  <img src="photo1.jpg" alt="Memory 1">
+
+  <!-- Photo 2 as Video -->
+  <video width="300" controls loop muted playsinline>
+    <source src="video2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </div>
 </section>
 
@@ -100,10 +106,10 @@ button{
 <section>
 <h1>Our Story</h1>
 <div class="timeline">
-<div>First time we met</div>
-<div>First time we laughed together</div>
-<div>The moment I realized I love you</div>
-<div>1.5 Years Anniversary</div>
+  <div>First time we met</div>
+  <div>First time we laughed together</div>
+  <div>The moment I realized I love you</div>
+  <div>1.5 Years Anniversary</div>
 </div>
 </section>
 
@@ -120,7 +126,7 @@ button{
 </section>
 
 <!-- Music -->
-<audio id="bgMusic" autoplay loop>
+<audio id="bgMusic" loop>
   <source src="your-song.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
@@ -147,6 +153,15 @@ function createHeart(){
   setTimeout(()=>{heart.remove()},5000);
 }
 setInterval(createHeart,300);
+
+// Autoplay music after first click anywhere (works on Chrome/Safari)
+document.body.addEventListener('click', function playMusicOnce(){
+  const music = document.getElementById('bgMusic');
+  if(music.paused){
+    music.play();
+  }
+  document.body.removeEventListener('click', playMusicOnce);
+});
 </script>
 
 </body>
