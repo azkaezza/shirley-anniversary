@@ -95,8 +95,8 @@ button{
   <img src="photo1.jpg" alt="Memory 1">
 
   <!-- Photo 2 as Video -->
-  <video width="300" controls loop muted playsinline>
-    <source src="video2.mp4" type="video/mp4">
+  <video width="300" controls loop playsinline preload="auto">
+    <source src="our_moment.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 </div>
@@ -142,7 +142,7 @@ function scrollToGallery(){
   document.getElementById('gallery').scrollIntoView({behavior:'smooth'});
 }
 
-// Falling hearts animation
+// Falling hearts animation (slightly slower to reduce lag)
 function createHeart(){
   const heart=document.createElement('div');
   heart.classList.add('heart');
@@ -152,9 +152,9 @@ function createHeart(){
   document.body.appendChild(heart);
   setTimeout(()=>{heart.remove()},5000);
 }
-setInterval(createHeart,300);
+setInterval(createHeart,500); // slower interval
 
-// Autoplay music after first click anywhere (works on Chrome/Safari)
+// Autoplay music after first click anywhere (works on modern browsers)
 document.body.addEventListener('click', function playMusicOnce(){
   const music = document.getElementById('bgMusic');
   if(music.paused){
