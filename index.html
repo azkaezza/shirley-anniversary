@@ -46,7 +46,7 @@ p{
 }
 .heart{
   position:fixed;
-  color:#ff4d6d;
+  color:#ff4d6d; /* red hearts stand out on light background */
   font-size:20px;
   animation:fall linear infinite;
 }
@@ -89,7 +89,9 @@ button{
 <section id="gallery">
 <h1>Our Moments</h1>
 <div class="gallery">
+  <!-- Photo 1 -->
   <img src="photo1.jpg" alt="Memory 1">
+  <!-- Video 2 -->
   <video id="ourVideo" width="300" controls loop playsinline preload="auto">
     <source src="our_moment.mp4" type="video/mp4">
     Your browser does not support the video tag.
@@ -126,17 +128,17 @@ function scrollToGallery(){
   document.getElementById('gallery').scrollIntoView({behavior:'smooth'});
 }
 
-// Falling hearts (optimized)
+// Falling hearts animation (optimized)
 function createHeart(){
-  const heart=document.createElement('div');
+  const heart = document.createElement('div');
   heart.classList.add('heart');
-  heart.innerHTML='❤';
-  heart.style.left=Math.random()*100+'vw';
-  heart.style.animationDuration=(Math.random()*3+2)+'s';
+  heart.innerHTML = '❤';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
   document.body.appendChild(heart);
-  setTimeout(()=>{heart.remove()},5000);
+  setTimeout(() => { heart.remove(); }, 5000);
 }
-setInterval(createHeart,700); // slower interval for smooth performance
+setInterval(createHeart, 700); // slower interval = smoother video
 
 // Video play manually
 const video = document.getElementById('ourVideo');
