@@ -9,7 +9,7 @@ body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
   background: linear-gradient(to bottom, #a0d8f1, #e0f7fa); /* light blue sky */
-  color:#222; /* dark text for readability */
+  color:#222;
   text-align:center;
   overflow-x:hidden;
 }
@@ -46,7 +46,7 @@ p{
 }
 .heart{
   position:fixed;
-  color:#ff4d6d; /* bright red hearts pop on light background */
+  color:#ff4d6d;
   font-size:20px;
   animation:fall linear infinite;
 }
@@ -71,11 +71,8 @@ button{
   margin:15px;
   padding:15px;
   border-radius:15px;
-  background:rgba(255,255,255,0.6); /* lighter timeline blocks on sky bg */
+  background:rgba(255,255,255,0.6);
   color:#222;
-}
-.music-button{
-  margin-top:20px;
 }
 </style>
 </head>
@@ -92,10 +89,7 @@ button{
 <section id="gallery">
 <h1>Our Moments</h1>
 <div class="gallery">
-  <!-- Photo 1 -->
   <img src="photo1.jpg" alt="Memory 1">
-
-  <!-- Video 2 -->
   <video id="ourVideo" width="300" controls loop playsinline preload="auto">
     <source src="our_moment.mp4" type="video/mp4">
     Your browser does not support the video tag.
@@ -126,24 +120,13 @@ button{
 <p>Shirley, thank you for being beside me through everything. This is only the beginning of our story.</p>
 </section>
 
-<!-- Music -->
-<audio id="bgMusic" loop>
-  <source src="your-song.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-<div class="music-button">
-  <button onclick="document.getElementById('bgMusic').paused ? document.getElementById('bgMusic').play() : document.getElementById('bgMusic').pause()">
-    🎵 Toggle Music
-  </button>
-</div>
-
 <script>
 // Scroll to gallery
 function scrollToGallery(){
   document.getElementById('gallery').scrollIntoView({behavior:'smooth'});
 }
 
-// Falling hearts animation (optimized)
+// Falling hearts (optimized)
 function createHeart(){
   const heart=document.createElement('div');
   heart.classList.add('heart');
@@ -153,19 +136,9 @@ function createHeart(){
   document.body.appendChild(heart);
   setTimeout(()=>{heart.remove()},5000);
 }
-// slower interval for performance
-setInterval(createHeart,700);
+setInterval(createHeart,700); // slower interval for smooth performance
 
-// Autoplay music after first click anywhere
-document.body.addEventListener('click', function playMusicOnce(){
-  const music = document.getElementById('bgMusic');
-  if(music.paused){
-    music.play();
-  }
-  document.body.removeEventListener('click', playMusicOnce);
-});
-
-// Optional: smooth video play when clicked manually
+// Video play manually
 const video = document.getElementById('ourVideo');
 video.addEventListener('click', () => {
   if(video.paused) video.play();
